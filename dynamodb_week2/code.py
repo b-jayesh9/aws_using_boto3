@@ -89,7 +89,7 @@ def get_data(tbl, user, pwd):
 
 def write_batch(tbl):
     with dynamodb.Table(tbl).batch_writer() as batch:
-        print("assad")
+        
         for i in range(len(accounts_list)):
             batch.put_item(
                 Item={
