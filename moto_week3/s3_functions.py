@@ -56,4 +56,4 @@ def main():
             print("{}".format(key))
 
             for body in read_s3_object(buckets, key):
-                print("{}".format(body)[1:])
+                print("{}".format(body))
