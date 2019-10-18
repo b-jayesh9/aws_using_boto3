@@ -15,7 +15,6 @@ class S3Tests(unittest.TestCase):
 
     @mock_s3
     def _moto_setup(self):
-        
         """
         simulation of s3 file upload
         """
@@ -53,6 +52,8 @@ class S3Tests(unittest.TestCase):
         self.__moto_setup()
         data = [str(d, encoding = "utf-8") for d in read_s3_object(self.bucket,self.key)]
         #doesn't read data as specified due to bytes like object.
+        #updated through Omkar's suggestion and works now. 
+        #Use str() at time of reading the object and not after it.
         self.assertTrue(self.value == data)
 
 
@@ -63,9 +64,9 @@ class S3Tests(unittest.TestCase):
         main()
         content = my_std_out.getvalue()
         #error above, couldn't fix.
-        self.assertTrue('[{}]'.format(self.bucket)in content)
-        self.assertTrue(r'[{}]'.format(self.key) in content)
-        self.assertTrue(r'{}'.format(self.value) in content)
+        self.assertTrue('{}'.format(self.bucket)in content)
+        self.assertTrue('{}'.format(self.key) in content)
+        self.assertTrue('{}'.format(self.value) in content)
 
 
 
