@@ -14,7 +14,7 @@ class S3Tests(unittest.TestCase):
         self.value = 'RA1511001010001'
 
     @mock_s3
-    def __moto_setup(self):
+    def _moto_setup(self):
         
         """
         simulation of s3 file upload
