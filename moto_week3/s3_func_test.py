@@ -26,8 +26,8 @@ class S3Tests(unittest.TestCase):
     @mock_s3
     def test_get_client(self):
         s3 = get_client()
-        #success
-        # have to check if it works without specifying the endpoint. 
+        # success
+        # have to check if boto3.client returns s3 endpoint with or without region.
         self.assertEqual(s3._endpoint.host, "https://s3.ap-south-1.amazonaws.com")
 
 
