@@ -4,6 +4,8 @@ def list_tables():
     dynamodb = boto3.resource('dynamodb')
     tables = [table.name for table in dynamodb.tables.all()]
     yield tables
+    
+#incomplete work
 
 
 def main():
