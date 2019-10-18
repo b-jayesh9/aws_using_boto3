@@ -42,7 +42,7 @@ def read_s3_object(bucket, key):
     response = s3.get_object(Bucket=bucket, Key=key)
     if response:
 
-        yield(response['Body'].read())
+        yield(response['Body'].read().decode())
 
 
 def main():
