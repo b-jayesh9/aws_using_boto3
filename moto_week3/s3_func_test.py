@@ -51,7 +51,7 @@ class S3Tests(unittest.TestCase):
     @mock_s3
     def test_read_s3_object(self):
         self.__moto_setup()
-        data = [d for d in read_s3_object(self.bucket,self.key)]
+        data = [str(d, encoding = "utf-8") for d in read_s3_object(self.bucket,self.key)]
         #doesn't read data as specified due to bytes like object.
         self.assertTrue(self.value == data)
 
