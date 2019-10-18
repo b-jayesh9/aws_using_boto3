@@ -19,7 +19,7 @@ class S3Tests(unittest.TestCase):
         """
         simulation of s3 file upload
         """
-        s3 = get_client()
+        s3_client = get_client()
         s3.create_bucket(Bucket=self.bucket)
         s3.put_object(Bucket=self.bucket, Key=self.key, Body = self.value)
         pass
