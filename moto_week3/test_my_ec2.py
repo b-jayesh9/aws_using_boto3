@@ -23,14 +23,9 @@ class Ec2TestCase(unittest.TestCase):
         """
         ec2 = get_client()
 
-        reservation = ec2.run_instances(ImageId=ec2_backend.describe_images() , MinCount=1, MaxCount=1)
+        reservation = ec2.run_instances(ImageId="something", MinCount=1, MaxCount=1)
+        #have to use ec2_backend.describe_images() as ImageId. 
         self.instance_id = reservation['Instances'][0]['InstanceId']
-
-    def tearDown(self):
-        """
-        tearDown will run after execution of each test case
-        """
-        pass
 
     @mock_ec2
     def test_get_client(self):
