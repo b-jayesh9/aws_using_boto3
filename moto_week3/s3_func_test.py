@@ -65,7 +65,7 @@ class S3Tests(unittest.TestCase):
         #error above, couldn't fix.
         self.assertTrue('[{}]'.format(self.bucket)in content)
         self.assertTrue(r'[{}]'.format(self.key) in content)
-        self.assertTrue(r'[{}]'.format(self.value) in content)
+        self.assertTrue(r'{}'.format(self.value) in content)
 
 
 
