@@ -21,7 +21,7 @@ class S3Tests(unittest.TestCase):
         s3_client = get_client()
         s3.create_bucket(Bucket=self.bucket)
         s3.put_object(Bucket=self.bucket, Key=self.key, Body = self.value)
-        pass
+        
 
     @mock_s3
     def test_get_client(self):
