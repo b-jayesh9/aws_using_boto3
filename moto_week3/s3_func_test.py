@@ -45,7 +45,7 @@ class S3Tests(unittest.TestCase):
         self.__moto_setup()
         keys = [b for b in list_s3_objects(self.bucket)]
         # success
-        self.assertTrue(self.key == keys)
+        self.assertIn(self.key, keys)
 
 
     @mock_s3
