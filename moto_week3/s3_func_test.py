@@ -27,6 +27,7 @@ class S3Tests(unittest.TestCase):
     def test_get_client(self):
         s3 = get_client()
         #success
+        # have to check if it works without specifying the endpoint. 
         self.assertEqual(s3._endpoint.host, "https://s3.ap-south-1.amazonaws.com")
 
 
@@ -64,6 +65,7 @@ class S3Tests(unittest.TestCase):
         main()
         content = my_std_out.getvalue()
         #error above, couldn't fix.
+        #fixed after using str() in the above code.
         self.assertTrue('{}'.format(self.bucket)in content)
         self.assertTrue('{}'.format(self.key) in content)
         self.assertTrue('{}'.format(self.value) in content)
