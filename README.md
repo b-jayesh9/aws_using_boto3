@@ -11,6 +11,4 @@ Installing :
 1)Pycharm : Download Pycharm and install it. 2)Python : Download Python and install it.  3)AWS ToolKit : In PyCharm , Install AWS ToolKit package to use AWS ToolKit in it.
 
 Deployment :
-
 Once packages have been downloaded , Connect the Pycharm with your AWS account . Once the Account gets connected ,Run helper.py.
-
