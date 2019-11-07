@@ -8,7 +8,6 @@ existing_tables = [table.name for table in dynamo_db.tables.all()]
 
 
 def create_table(tbl, key_attr1, key_attr2):
-
     """
     :param tbl:  name of the table to be created
     :param key_attr1: name of 1st attribute in key schema
@@ -62,12 +61,12 @@ def put_data(tbl, user, pwd, name):
 
         )
         if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-            return True
+            return 'successfully put data'
         else:
-            return False
+            return 'Failure in putting data'
     except ClientError as ce:
         if ce.response['Error']['Code'] == 'ConditionalCheckFailedException':
-            print("username and password already exists")
+            return "username and password already exists"
 
 
 def get_data(tbl, user, pwd):
@@ -80,14 +79,13 @@ def get_data(tbl, user, pwd):
 
     )
     if 'Item' in response:
-        print(response['Item'])
         return response['Item']
     else:
         return None
 
 
 def write_batch(tbl):
-    with open('generated.json') as json_data:
+    with open('dynamodb_week2\generated.json') as json_data:
         items = json.load(json_data)
         table = dynamo_db.Table(tbl)
         with table.batch_writer() as batch:
@@ -149,4 +147,3 @@ def delete_all_items(tbl_to_delete_items):
             print("Error occurred while deleting items in {} table".format(tbl_to_delete_items))
     else:
         print("No such table exists")
-
