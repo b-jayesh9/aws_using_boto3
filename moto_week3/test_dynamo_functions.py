@@ -9,7 +9,7 @@ class TestDynamo(unittest.TestCase):
         pass
 
     @mock_dynamodb2
-    def test_recoverBsaleAssociation(self):
+    def test_dynamo_db(self):
         table_name = 'test'
         dynamodb = boto3.resource('dynamodb', 'us-east-1')
 
@@ -34,8 +34,9 @@ class TestDynamo(unittest.TestCase):
             }
         )
 
-        item = {}
-        item['key'] = 'value'
+        # add a sample item to the table to check if mocking is being done successfully
+
+        item = {'key': 'value'}
 
         table.put_item(Item=item)
 
@@ -45,6 +46,7 @@ class TestDynamo(unittest.TestCase):
                 'key': 'value'
             }
         )
+        print(response)
         if 'Item' in response:
             item = response['Item']
 
