@@ -1,6 +1,8 @@
 import boto3
 import json
 
+from botocore.exceptions import ClientError
+
 dynamo_db = boto3.resource('dynamodb')
 existing_tables = [table.name for table in dynamo_db.tables.all()]
 
@@ -39,8 +41,8 @@ def create_table(tbl, key_attr1, key_attr2):
         ],
 
         ProvisionedThroughput={
-            'ReadCapacityUnits': 50,
-            'WriteCapacityUnits': 50
+            'ReadCapacityUnits': 5,
+            'WriteCapacityUnits': 5
         }
     )
 
@@ -49,19 +51,23 @@ def create_table(tbl, key_attr1, key_attr2):
 
 def put_data(tbl, user, pwd, name):
     table = dynamo_db.Table(tbl)
-    response = table.put_item(
-        Item={
-            'username': user,
-            'password': pwd,
-            'name': name
-        },
-        ConditionExpression='attribute_not_exists(username) AND attribute_not_exists(password)'
+    try:
+        response = table.put_item(
+            Item={
+                'username': user,
+                'password': pwd,
+                'name': name
+            },
+            ConditionExpression='attribute_not_exists(username) AND attribute_not_exists(password)'
 
-    )
-    if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-        return True
-    else:
-        return False
+        )
+        if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+            return True
+        else:
+            return False
+    except ClientError as ce:
+        if ce.response['Error']['Code'] == 'ConditionalCheckFailedException':
+            print("username and password already exists")
 
 
 def get_data(tbl, user, pwd):

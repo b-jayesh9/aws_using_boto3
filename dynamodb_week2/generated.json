@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Harris Hancock",
+    "gender": "male",
+    "password": "Isonus",
+    "username": "harrishancock@isonus.com",
+    "phone": "+1 (821) 450-2714"
+  },
+  {
+    "name": "Mathews Bowen",
+    "gender": "male",
+    "password": "Stucco",
+    "username": "mathewsbowen@stucco.com",
+    "phone": "+1 (992) 583-2791"
+  },
+  {
+    "name": "Toni Brewer",
+    "gender": "female",
+    "password": "Equitax",
+    "username": "tonibrewer@equitax.com",
+    "phone": "+1 (915) 555-2393"
+  },
+  {
+    "name": "Dyer French",
+    "gender": "male",
+    "password": "Uncorp",
+    "username": "dyerfrench@uncorp.com",
+    "phone": "+1 (879) 596-2828"
+  },
+  {
+    "name": "Sherrie Brown",
+    "gender": "female",
+    "password": "Zomboid",
+    "username": "sherriebrown@zomboid.com",
+    "phone": "+1 (919) 528-2493"
+  },
+  {
+    "name": "Carolyn Monroe",
+    "gender": "female",
+    "password": "Micronaut",
+    "username": "carolynmonroe@micronaut.com",
+    "phone": "+1 (949) 477-3631"
+  },
+  {
+    "name": "Marietta Austin",
+    "gender": "female",
+    "password": "Coriander",
+    "username": "mariettaaustin@coriander.com",
+    "phone": "+1 (956) 430-3333"
+  },
+  {
+    "name": "Marta Rush",
+    "gender": "female",
+    "password": "Accusage",
+    "username": "martarush@accusage.com",
+    "phone": "+1 (889) 552-2714"
+  },
+  {
+    "name": "Bowers Bryant",
+    "gender": "male",
+    "password": "Omatom",
+    "username": "bowersbryant@omatom.com",
+    "phone": "+1 (981) 560-2010"
+  },
+  {
+    "name": "Calderon Freeman",
+    "gender": "male",
+    "password": "Icology",
+    "username": "calderonfreeman@icology.com",
+    "phone": "+1 (973) 468-3105"
+  },
+  {
+    "name": "Deana Rivers",
+    "gender": "female",
+    "password": "Bedder",
+    "username": "deanarivers@bedder.com",
+    "phone": "+1 (809) 406-2787"
+  },
+  {
+    "name": "Vivian Fernandez",
+    "gender": "female",
+    "password": "Bluplanet",
+    "username": "vivianfernandez@bluplanet.com",
+    "phone": "+1 (935) 571-3424"
+  },
+  {
+    "name": "Heath Case",
+    "gender": "male",
+    "password": "Medcom",
+    "username": "heathcase@medcom.com",
+    "phone": "+1 (985) 536-2168"
+  },
+  {
+    "name": "Hannah Mendoza",
+    "gender": "female",
+    "password": "Twiggery",
+    "username": "hannahmendoza@twiggery.com",
+    "phone": "+1 (876) 550-2799"
+  },
+  {
+    "name": "Rollins Black",
+    "gender": "male",
+    "password": "Bleeko",
+    "username": "rollinsblack@bleeko.com",
+    "phone": "+1 (816) 597-3643"
+  },
+  {
+    "name": "Therese Cross",
+    "gender": "female",
+    "password": "Konnect",
+    "username": "theresecross@konnect.com",
+    "phone": "+1 (946) 415-2569"
+  },
+  {
+    "name": "Chase Emerson",
+    "gender": "male",
+    "password": "Yurture",
+    "username": "chaseemerson@yurture.com",
+    "phone": "+1 (923) 593-2242"
+  }
+]

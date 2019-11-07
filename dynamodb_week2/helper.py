@@ -1,3 +1,4 @@
+from boto.dynamodb2.exceptions import ConditionalCheckFailedException
 import code as c
 import time
 
@@ -5,6 +6,7 @@ table_name = 'my_new_table'
 
 if __name__ == '__main__':
     if table_name not in c.existing_tables:
+
         print("creating")
         c.create_table('my_new_table', 'username', 'password')
         # takes 3 parameters: table_name, key attribute 1 and key attribute 2
@@ -14,6 +16,7 @@ if __name__ == '__main__':
         print("table created")
 
         c.put_data('my_new_table', 'abc@xyz.com', 'qazxsw', 'jay')
+
         # takes 4 parameters: table_name, key attribute 1, key attribute 2 and some other attribute
 
         c.get_data('my_new_table', 'abc@xyz.com', 'qazxsw')
