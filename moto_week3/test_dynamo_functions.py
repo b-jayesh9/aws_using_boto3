@@ -46,9 +46,9 @@ class TestDynamo(unittest.TestCase):
                 'key': 'value'
             }
         )
-        print(response)
+        # print(response)
         if 'Item' in response:
             item = response['Item']
-
+            
         self.assertTrue("key" in item)
         self.assertEqual(item["key"], "value")
