@@ -1,6 +1,7 @@
 import boto3
 import json
 
+from boto.dynamodb2.exceptions import ResourceInUseException
 from botocore.exceptions import ClientError
 
 dynamo_db = boto3.resource('dynamodb')
@@ -85,31 +86,25 @@ def get_data(tbl, user, pwd):
 
 
 def write_batch(tbl):
-    with open('dynamodb_week2\generated.json') as json_data:
+    count = 0
+    with open("dynamodb_week2\generated.json") as json_data:
         items = json.load(json_data)
         table = dynamo_db.Table(tbl)
         with table.batch_writer() as batch:
             # Loop through the JSON objects
             for item in items:
-                batch.put_item(Item=item)
+                try:
+                    batch.put_item(Item=item)
+                    count = count+1
+                except Exception as e:
+                    pass
 
-    return dynamo_db.Table(tbl).item_count
-
-
-def delete_table(tbl):
-    if tbl in existing_tables:
-        table = dynamo_db.Table(tbl)
-        table.delete()
-        dynamo_db.Table(tbl).wait_until_not_exists()
-        all_tables_after_deletion = [table.name for table in dynamo_db.tables.all()]
-        return "table deleted successfully" if tbl not in all_tables_after_deletion else "Error in deleting table"
-    else:
-        return "No such table exists"
+    return count
 
 
 def update_item(tbl, user, pwd, key_to_insert, value_to_insert):
     table = dynamo_db.Table(tbl)
-    table.update_item(
+    response = table.update_item(
         Key={
             'username': user,
             'password': pwd
@@ -120,7 +115,10 @@ def update_item(tbl, user, pwd, key_to_insert, value_to_insert):
         }
     )
 
-    return 0
+    if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+        return 'successfully updated data'
+    else:
+        return 'Failure in updating data'
 
 
 def delete_item(tbl, key_val_pair):
@@ -135,15 +133,27 @@ def delete_item(tbl, key_val_pair):
         return True
 
 
+def delete_table(tbl):
+    if tbl in existing_tables:
+        table = dynamo_db.Table(tbl)
+        table.delete()
+        dynamo_db.Table(tbl).wait_until_not_exists()
+        all_tables_after_deletion = [table.name for table in dynamo_db.tables.all()]
+        return "table deleted successfully" if tbl not in all_tables_after_deletion else "Error in deleting table"
+    else:
+        return "No such table exists"
+
+
 def delete_all_items(tbl_to_delete_items):
     if tbl_to_delete_items in existing_tables:
         table = dynamo_db.Table(tbl_to_delete_items)
-        table.delete()
         try:
-
+            table.delete()
+            # will only get deleted if the table is in active state.
             dynamo_db.Table(tbl_to_delete_items).wait_until_not_exists()
             create_table(tbl_to_delete_items, key_attr1='username', key_attr2='password')
-        except Exception:
-            print("Error occurred while deleting items in {} table".format(tbl_to_delete_items))
+            return "All items deleted from table"
+        except ResourceInUseException:
+            return "Error occurred while deleting items in {} table".format(tbl_to_delete_items)
     else:
-        print("No such table exists")
+        return "No such table exists"
