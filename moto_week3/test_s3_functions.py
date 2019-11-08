@@ -1,9 +1,9 @@
-import boto3
 import io
 import sys
 import unittest
 from moto import mock_s3
 from s3_functions import main, get_client, list_s3_buckets, list_s3_objects, read_s3_object
+import xmlrunner
 
 
 class S3Tests(unittest.TestCase):
@@ -64,3 +64,12 @@ class S3Tests(unittest.TestCase):
         self.assertTrue('{}'.format(self.bucket) in content)
         self.assertTrue('{}'.format(self.key) in content)
         self.assertTrue('{}'.format(self.value) in content)
+
+
+if __name__ == '__main__':
+    unittest.main(
+        testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
+        failfast=False,
+        buffer=False,
+        catchbreak=False)
+

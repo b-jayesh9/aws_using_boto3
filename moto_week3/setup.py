@@ -13,7 +13,7 @@ setup(
 
     test_suite='tests',
 
-    install_requires=['boto3'],
+    install_requires=['boto3', 'unittest-xml-reporting'],
 
     tests_require=['moto'],
 
