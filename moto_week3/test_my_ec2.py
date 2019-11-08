@@ -2,7 +2,6 @@ import sys
 import io
 import unittest
 from moto import mock_ec2
-from moto import mock_ec2_deprecated
 from my_ec2 import get_client, list_ec2_instances, main
 import xmlrunner
 
@@ -10,8 +9,6 @@ import xmlrunner
 class Ec2TestCase(unittest.TestCase):
 
     @mock_ec2
-    @mock_ec2_deprecated
-    # used mock ec2 deprecated here coz of deprecation warning while using the ImageID
     def _moto_setup(self):
         """
         Run Instance
@@ -32,7 +29,7 @@ class Ec2TestCase(unittest.TestCase):
     @mock_ec2
     def test_list_ec2_instances(self):
         """
-        check that our bucket shows as expected
+        check that our instance shows as expected
         """
         instances = [e for e in list_ec2_instances()]
         self.assertEqual([], instances)

@@ -29,7 +29,7 @@ def list_s3_objects(bucket):
             for _object in response['Contents']:
                 yield(_object['Key'])
         except KeyError:
-            print("KeyError. No such key exists in the specified bucket")
+            return "KeyError. No such key exists in the specified bucket"
 
 
 def read_s3_object(bucket, key):
