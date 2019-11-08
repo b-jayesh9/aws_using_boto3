@@ -24,7 +24,7 @@ class Ec2TestCase(unittest.TestCase):
         ec2 = get_client()
 
         reservation = ec2.run_instances(ImageId="something", MinCount=1, MaxCount=1)
-        #have to use ec2_backend.describe_images() as ImageId. 
+        # have to use ec2_backend.describe_images() as ImageId.
         self.instance_id = reservation['Instances'][0]['InstanceId']
 
     @mock_ec2

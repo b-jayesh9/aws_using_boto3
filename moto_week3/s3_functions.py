@@ -2,16 +2,16 @@ import boto3
 
 
 def get_client():
-    '''
+    """
     get the client endpoint for the service
-    '''
+    """
     return boto3.client("s3")
 
 
 def list_s3_buckets():
-    '''
+    """
     lists all the bucket names and stores them, to be used in the main function
-    '''
+    """
     s3 = get_client()
     response = s3.list_buckets()
     for bucket in response['Buckets']:
@@ -20,7 +20,6 @@ def list_s3_buckets():
 
 def list_s3_objects(bucket):
     """
-    
     lists all the objects of a particular bucket and stores them, to be used in the main function
     """
     s3 = get_client()
@@ -34,9 +33,9 @@ def list_s3_objects(bucket):
 
 
 def read_s3_object(bucket, key):
-    '''
+    """
     reads the data of a particular object of a object and stores them, to be used in the main function
-    '''
+    """
     s3 = get_client()
 
     response = s3.get_object(Bucket=bucket, Key=key)

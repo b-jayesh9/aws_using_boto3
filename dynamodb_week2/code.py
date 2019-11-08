@@ -79,6 +79,7 @@ def get_data(tbl, user, pwd):
         Key={'username': user, 'password': pwd}
 
     )
+
     if 'Item' in response:
         return response['Item']
     else:
