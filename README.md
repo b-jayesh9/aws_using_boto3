@@ -1,4 +1,5 @@
-# aws_using_boto3
+# aws_using_boto3 [![DeepSource](https://static.deepsource.io/deepsource-badge-light.svg)](https://deepsource.io/gh/yashkim24/StackOverflow-assistant-bot/?ref=repository-badge)
+
 Working with AWS using Boto3 library of Python
 
 CRUD Operations in DynamoDB using Boto3 API of Python
